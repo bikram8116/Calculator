@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,10 +35,10 @@
         }
 
         button {
-            width: 100%;
+            width: 23.5%;
             height: 40px;
             font-size: 14px;
-            margin-bottom: 8px;
+            margin: 2%;
             border: 1px solid #ccc;
             border-radius: 4px;
             cursor: pointer;
@@ -58,8 +57,8 @@
         .equal {
             background-color: #28a745;
             color: white;
-            height: 80px;
-            font-size: 20px;
+            height: 40px;
+            font-size: 14px;
             grid-column: span 2;
             grid-row: span 2;
         }
@@ -67,13 +66,11 @@
         .clear {
             background-color: #dc3545;
             color: white;
-            order: 1;
             grid-column: span 2;
         }
 
         .row {
             display: flex;
-            flex-wrap: wrap;
         }
 
         .last-column {
@@ -82,59 +79,54 @@
     </style>
     <title>Mobile-Friendly Calculator</title>
 </head>
-
 <body>
 
-    <div class="calculator">
-        <input type="text" id="display" class="display" disabled>
-        <div class="row">
-            <button onclick="appendToDisplay('+')" class="operator">+</button>
-            <button onclick="appendToDisplay('-')" class="operator">-</button>
-            <button onclick="appendToDisplay('*')" class="operator">*</button>
-            <button onclick="appendToDisplay('/')" class="operator last-column">/</button>
-        </div>
-        <div class="row">
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-        </div>
-        <div class="row">
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-        </div>
-        <div class="row">
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-        </div>
-        <div class="row">
-            <button onclick="clearDisplay()" class="clear">C</button>
-            <button onclick="calculateResult()" class="equal">=</button>
-            <button onclick="appendToDisplay('0')">0</button>
-            <button onclick="appendToDisplay('.')">.</button>
-        </div>
+<div class="calculator">
+    <input type="text" id="display" class="display" disabled>
+    <div class="row">
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('+')" class="operator">+</button>
     </div>
+    <div class="row">
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')" class="operator">-</button>
+    </div>
+    <div class="row">
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('*')" class="operator">*</button>
+    </div>
+    <div class="row">
+        <button onclick="appendToDisplay('/')" class="last-column">/</button>
+        <button onclick="clearDisplay()" class="clear">C</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="calculateResult()" class="equal">=</button>
+    </div>
+</div>
 
-    <script>
-        let display = document.getElementById('display');
+<script>
+    let display = document.getElementById('display');
 
-        function appendToDisplay(value) {
-            display.value += value;
+    function appendToDisplay(value) {
+        display.value += value;
+    }
+
+    function clearDisplay() {
+        display.value = '';
+    }
+
+    function calculateResult() {
+        try {
+            display.value = eval(display.value);
+        } catch (error) {
+            display.value = 'Error';
         }
-
-        function clearDisplay() {
-            display.value = '';
-        }
-
-        function calculateResult() {
-            try {
-                display.value = eval(display.value);
-            } catch (error) {
-                display.value = 'Error';
-            }
-        }
-    </script>
+    }
+</script>
 </body>
-
 </html>
